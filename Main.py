@@ -6,28 +6,28 @@ class Product:
     def show_product(self):
         print(f"Product Name: {self.name}, Price : {self.price}")
 
-    class Customer:
-        def __init__(self,name):
-            self.name=name
-            self.cart=[]
+class Customer:
+    def __init__(self,name):
+        self.name=name
+        self.cart=[]
 
-        def add_to_cart(self,product):
-            self.cart.append(product)
-            print(f"{product.name} added to cart.")
+    def add_to_cart(self,product):
+        self.cart.append(product)
+        print(f"{product.name} added to cart.")
 
-        def show_cart(self):
-            print("\n-----Cart-----")
+    def show_cart(self):
+        print("\n-----Cart-----")
 
-            if not self.cart:
-                print("Cart is Empty")
-                return
+        if not self.cart:
+            print("Cart is Empty")
+            return
 
-            total=0
+        total=0
 
-            for product in self.cart:
-                product.show_product()
-                total+=product.price
-            print(f"Total Price: {total}")
+        for product in self.cart:
+            product.show_product()
+            total+=product.price
+        print(f"Total Price: {total}")
 
 class Order:
     def __init__(self,customer):
@@ -46,8 +46,27 @@ class Order:
     def show_order_status(self):
         print(f"Order Status: {self.status}")
 
+
 laptop = Product("Laptop", 1000)
 phone = Product("Phone", 500)
 keyboard = Product("Keyboard", 10000)
+
+
+customer=Customer("ali")
+
+laptop.show_product()
+phone.show_product()
+keyboard.show_product() 
+
+customer.add_to_cart(laptop)
+customer.add_to_cart(phone)
+customer.add_to_cart(keyboard)
+customer.show_cart()
+
+
+
+order=Order(customer)
+order.place_order()
+order.show_order_status()
 
 
