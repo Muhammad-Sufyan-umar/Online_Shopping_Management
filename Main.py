@@ -15,6 +15,7 @@ class Customer:
         self.cart = Cart()
 
     def __str__(self):
+        print("<=====Customer Details=============>")
         return f"Customer Name: {self.name}, Email: {self.email}"
 
 
@@ -69,7 +70,7 @@ class Cart:
             )
 
             total += product.price * quantity
-
+        print("==============================\n")
         print(f"Total Price: Rs.{total}")
 
 
@@ -124,6 +125,8 @@ for product in products:
 
 # Add products to cart
 
+print("\n----- Adding Products to Cart -----\n")
+
 customer.cart.add_to_cart(products[0], 1)
 customer.cart.add_to_cart(products[1], 2)
 customer.cart.add_to_cart(products[3], 1)
@@ -136,6 +139,9 @@ customer.cart.show_cart()
 
 # Place order
 
+
+print("\n----- Placing Order -----\n")
+
 order = Order(customer)
 
 order.place_order()
@@ -145,5 +151,7 @@ order.show_order_status()
 
 # Show cart after order
 
+
 print("\nCart after order:")
+
 customer.cart.show_cart()
